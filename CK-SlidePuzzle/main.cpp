@@ -184,25 +184,23 @@ ArrowKey GetArrowKey()
 	while (true)
 	{
 		int input = 0;
-		while (1)
+
+		if (_kbhit())
 		{
-			if (_kbhit())
+			input = _getch();
+			if (input == 224)
 			{
 				input = _getch();
-				if (input == 224)
+				switch (input)
 				{
-					input = _getch();
-					switch (input)
-					{
-					case 72:
-						return ArrowKey::UP;
-					case 80:
-						return ArrowKey::DOWN;
-					case 75:
-						return ArrowKey::LEFT;
-					case 77:
-						return ArrowKey::RIGHT;
-					}
+				case 72:
+					return ArrowKey::UP;
+				case 80:
+					return ArrowKey::DOWN;
+				case 75:
+					return ArrowKey::LEFT;
+				case 77:
+					return ArrowKey::RIGHT;
 				}
 			}
 		}
